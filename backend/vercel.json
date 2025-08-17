@@ -1,18 +1,22 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "server.js",
-        "use": "@vercel/node"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/api/(.*)",
-        "dest": "/server.js"
-      }
-    ],
-    "env": {
-      "MONGODB_URI": "@mongodb_uri"
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
     }
+  ],
+  "routes": [
+    {
+      "src": "/api/health",
+      "dest": "/api/health.js"
+    },
+    {
+      "src": "/api/wallet/check",
+      "dest": "/api/wallet/check.js"
+    }
+  ],
+  "env": {
+    "MONGODB_URI": "@mongodb_uri"
   }
+}
