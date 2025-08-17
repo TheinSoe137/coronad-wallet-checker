@@ -9,6 +9,9 @@
     "setup": "node sample-data.js",
     "add-wallet": "node sample-data.js"
   },
+  "engines": {
+    "node": "22.x"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^17.2.0",
