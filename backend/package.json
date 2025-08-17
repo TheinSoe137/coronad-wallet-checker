@@ -1,0 +1,31 @@
+{
+  "name": "wallet-checker-backend",
+  "version": "1.0.0",
+  "description": "Backend API for wallet checker component",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "setup": "node sample-data.js",
+    "add-wallet": "node sample-data.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^4.18.0",
+    "express-rate-limit": "^7.0.0",
+    "mongodb": "^6.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  },
+  "keywords": [
+    "wallet",
+    "checker",
+    "whitelist",
+    "mongodb",
+    "express"
+  ],
+  "author": "",
+  "license": "MIT"
+}
