@@ -16,25 +16,11 @@ const COLLECTION_NAME = 'wallets';
 let db;
 
 // Middleware
-const allowedOrigins = [
-	'https://wallet-checker-zeta.vercel.app',
-	
-];
-const corsOptions = {
-	origin: (origin, callback) => {
-		if (!origin) return callback(null, true);
-		if (allowedOrigins.includes(origin) || /\.vercel\.app$/.test(origin)) {
-			return callback(null, true);
-		}
-		return callback(null, false);
-	},
-	methods: ['GET', 'POST', 'OPTIONS'],
-	allowedHeaders: ['Content-Type'],
-	maxAge: 86400,
-	optionsSuccessStatus: 204
-};
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+
+app.use(cors({
+    origin: 'https://wallet-checker-frontend-git-main-theinsoes-projects.vercel.app/', // Replace with your React app's origin
+   
+}));
 app.use(express.json());
 
 // Rate limiting - 30 requests per minute per IP
