@@ -19,6 +19,17 @@ let db;
 app.use(cors());
 app.use(express.json());
 
+// Explicit CORS headers and preflight handler (important for Vercel/serverless)
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+    }
+    next();
+});
+
 // Rate limiting - 30 requests per minute per IP
 const limiter = rateLimit({
     windowMs: 60 * 1000, // 1 minute
@@ -26,7 +37,8 @@ const limiter = rateLimit({
     message: {
         success: false,
         error: 'Too many requests, please try again later.'
-    }
+    },
+    skip: (req) => req.method === 'OPTIONS'
 });
 
 app.use('/api/', limiter);
@@ -44,9 +56,23 @@ async function connectToDatabase() {
         console.log('Connected to MongoDB successfully');
     } catch (error) {
         console.error('Failed to connect to MongoDB:', error);
-        process.exit(1);
+        throw error;
     }
 }
+
+// Ensure DB connection in serverless/runtime
+async function ensureDatabaseConnection(req, res, next) {
+    try {
+        if (!db) {
+            await connectToDatabase();
+        }
+        next();
+    } catch (error) {
+        res.status(500).json({ success: false, error: 'Database connection failed' });
+    }
+}
+
+app.use('/api', ensureDatabaseConnection);
 
 // Utility functions
 function validateEVMAddress(address) {
@@ -192,22 +218,21 @@ app.use('*', (req, res) => {
     });
 });
 
-// Start server
-async function startServer() {
-    await connectToDatabase();
-    
-    app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
-        console.log(`Health check: http://localhost:${PORT}/api/health`);
-        console.log(`Wallet check: POST http://localhost:${PORT}/api/wallet/check`);
-    });
+// Local dev server only. On Vercel we export the app without listening.
+if (require.main === module) {
+    (async () => {
+        try {
+            await connectToDatabase();
+            app.listen(PORT, () => {
+                console.log(`Server running on port ${PORT}`);
+                console.log(`Health check: http://localhost:${PORT}/api/health`);
+                console.log(`Wallet check: POST http://localhost:${PORT}/api/wallet/check`);
+            });
+        } catch (error) {
+            console.error('Failed to start server:', error);
+            process.exit(1);
+        }
+    })();
 }
-
-startServer().catch(console.error);
 
 module.exports = app;
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
-    });
-}
