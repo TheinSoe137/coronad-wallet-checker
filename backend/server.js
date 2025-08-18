@@ -196,18 +196,18 @@ app.use('*', (req, res) => {
 async function startServer() {
     await connectToDatabase();
     
-    if (process.env.NODE_ENV !== 'production') {
-        app.listen(PORT, () => {
-            console.log(`Server running on port ${PORT}`);
-            console.log(`Health check: http://localhost:${PORT}/api/health`);
-            console.log(`Wallet check: POST http://localhost:${PORT}/api/wallet/check`);
-        });
-    }
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+        console.log(`Health check: http://localhost:${PORT}/api/health`);
+        console.log(`Wallet check: POST http://localhost:${PORT}/api/wallet/check`);
+    });
 }
 
-// Only start server if not in production (Vercel)
-if (process.env.NODE_ENV !== 'production') {
-    startServer().catch(console.error);
-}
+startServer().catch(console.error);
 
 module.exports = app;
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}
