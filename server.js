@@ -18,7 +18,7 @@ let db;
 // Middleware
 
 app.use(cors({
-    origin: 'https://wallet-checker-frontend-git-main-theinsoes-projects.vercel.app/', // Replace with your React app's origin
+    origin: "*", // Replace with your React app's origin
    
 }));
 app.use(express.json());
