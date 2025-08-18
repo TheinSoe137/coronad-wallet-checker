@@ -16,21 +16,26 @@ const COLLECTION_NAME = 'wallets';
 let db;
 
 // Middleware
-app.use(cors({
-    origin: 'https://wallet-checker-zeta.vercel.app/',
-}));
+const allowedOrigins = [
+	'https://wallet-checker-zeta.vercel.app',
+	
+];
+const corsOptions = {
+	origin: (origin, callback) => {
+		if (!origin) return callback(null, true);
+		if (allowedOrigins.includes(origin) || /\.vercel\.app$/.test(origin)) {
+			return callback(null, true);
+		}
+		return callback(null, false);
+	},
+	methods: ['GET', 'POST', 'OPTIONS'],
+	allowedHeaders: ['Content-Type'],
+	maxAge: 86400,
+	optionsSuccessStatus: 204
+};
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 app.use(express.json());
-
-// Explicit CORS headers and preflight handler (important for Vercel/serverless)
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    if (req.method === 'OPTIONS') {
-        return res.sendStatus(200);
-    }
-    next();
-});
 
 // Rate limiting - 30 requests per minute per IP
 const limiter = rateLimit({
@@ -222,19 +227,19 @@ app.use('*', (req, res) => {
 
 // Local dev server only. On Vercel we export the app without listening.
 if (require.main === module) {
-    (async () => {
-        try {
-            await connectToDatabase();
-            app.listen(PORT, () => {
-                console.log(`Server running on port ${PORT}`);
-                console.log(`Health check: http://localhost:${PORT}/api/health`);
-                console.log(`Wallet check: POST http://localhost:${PORT}/api/wallet/check`);
-            });
-        } catch (error) {
-            console.error('Failed to start server:', error);
-            process.exit(1);
-        }
-    })();
+	(async () => {
+		try {
+			await connectToDatabase();
+			app.listen(PORT, () => {
+				console.log(`Server running on port ${PORT}`);
+				console.log(`Health check: http://localhost:${PORT}/api/health`);
+				console.log(`Wallet check: POST http://localhost:${PORT}/api/wallet/check`);
+			});
+		} catch (error) {
+			console.error('Failed to start server:', error);
+			process.exit(1);
+		}
+	})();
 }
 
 module.exports = app;
