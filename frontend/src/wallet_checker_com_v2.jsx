@@ -4,7 +4,7 @@ import { validateEVMAddress } from './utils/validation_utils';
 
 
 const WalletChecker = ({
-    apiEndpoint = 'http://localhost:3001/api/wallet/check',
+    apiEndpoint = 'https://wallet-checker-server.vercel.app/api/wallet/check',
   
     onResult = null,
     customStyles = {},
