@@ -16,7 +16,9 @@ const COLLECTION_NAME = 'wallets';
 let db;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: 'https://wallet-checker-zeta.vercel.app/',
+}));
 app.use(express.json());
 
 // Explicit CORS headers and preflight handler (important for Vercel/serverless)
