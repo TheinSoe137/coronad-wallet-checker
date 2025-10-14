@@ -16,7 +16,7 @@ const COLLECTION_NAME = 'wallets';
 let db;
 
 app.use(cors({
-    origin: "https://wallet-checker-zeta.vercel.app/", // Replace with your React app's origin
+    origin: "*" // Replace with your React app's origin
    
 }));
 app.use(express.json());
