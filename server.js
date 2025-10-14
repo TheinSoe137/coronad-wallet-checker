@@ -15,10 +15,8 @@ const COLLECTION_NAME = 'wallets';
 
 let db;
 
-// Middleware
-
 app.use(cors({
-    origin: "*", // Replace with your React app's origin
+    origin: "https://wallet-checker-zeta.vercel.app", // Replace with your React app's origin
    
 }));
 app.use(express.json());
@@ -91,9 +89,9 @@ function validateEVMAddress(address) {
 
 function getRoleMessage(role) {
     const messages = {
-        whitelist: 'You have whitelist access! You can participate in the whitelist round.',
-        fcfs: 'You have FCFS (First Come First Serve) access! You can participate after the whitelist round.',
-        guaranteed: 'You have guaranteed allocation access! You are guaranteed a spot in the sale.'
+        Crown: 'Your wallet is eligible! You’ve secured 2 NFTs in the FCFS Mint Phase. Let’s go, October 20th, mark your calendars!',
+        Loyal_Crown: 'Your wallet is eligible! You’ve secured 2 NFTs in the GTD Mint Phase. Let’s go, October 20th, mark your calendars!',
+        Graduated_Crown: 'Your wallet is eligible! You’ve secured 1 NFT in the Free Mint Phase and 2 NFTs in the GTD Mint Phase. Let’s go, October 20th, mark your calendars!'
     };
     return messages[role] || 'Access granted';
 }
