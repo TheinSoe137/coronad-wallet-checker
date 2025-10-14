@@ -103,7 +103,7 @@ async function addWallet(address, roles) {
         }
         
         // Validate roles
-        const validRoles = ['whitelist', 'fcfs', 'guaranteed'];
+        const validRoles = ['Crown', 'Loyal_Crown', 'Graduated_Crown'];
         if (!validRoles.includes(roles)) {
             console.error(`Invalid roles. Must be one of: ${validRoles.join(', ')}`);
             return;
