@@ -12,11 +12,8 @@ dist
 dist-ssr
 *.local
 .env
-<<<<<<< HEAD
 sample-data.js
 *.txt
-=======
->>>>>>> 9418ae424ae39ff1cbc19149a234e8fc8ec299ae
 
 # Editor directories and files
 .vscode/*
