@@ -28,3 +28,25 @@
   border-radius: 12px;
   box-shadow: 0 2px 8px #0000004d, 0 0 0 1px #d4af3733, inset 0 1px #fbf5b74d;
 }
+
+@layer utilities {
+  .text-gold-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: radial-gradient(
+        ellipse farthest-corner at right bottom,
+        #FFD700 0%,
+        #F4C430 10%,
+        #E6AC00 28%,
+        #D4AF37 38%,
+        transparent 78%
+      ),
+      radial-gradient(
+        ellipse farthest-corner at left top,
+        #FFFACD 0%,
+        #FFF8DC 8%,
+        #F0E68C 20%,
+        #E6B93C 50%,
+        #B8860B 100%
+      );
+  }
+}

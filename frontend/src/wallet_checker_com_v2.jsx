@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useWalletCheck from './hooks/wallet_check_hook';
 import { validateEVMAddress } from './utils/validation_utils';
+import logo from "./assets/logo.png"
 
 
 
@@ -64,12 +65,37 @@ const WalletChecker = ({
 
     const getRoleMessage = (role) => {
         const messages = {
-            Crown: `Your wallet is eligible! You’ve secured  2 NFTs in the FCFS Mint Phase. Let’s go, October 20th, mark your calendars!`,
-            Loyal_Crown: `Your wallet is eligible! You’ve secured 2 NFTs in the GTD Mint Phase. Let’s go, October 20th, mark your calendars!`,
-            Graduated_Crown: `Your wallet is eligible! You’ve secured 1 NFT in the Free Mint Phase and 2 NFTs in the GTD Mint Phase. Let’s go, October 20th, mark your calendars!`
+          Crown: (
+            <>
+              Your wallet is eligible! You’ve secured{" "}
+              <span className="text-gold-gradient font-semibold">2 NFTs</span> in the{" "}
+              <span className="text-gold-gradient font-semibold">FCFS Mint Phase</span>.
+              Let’s go, <span className="text-pink-400">October Xth</span>, mark your calendars!
+            </>
+          ),
+          Loyal_Crown: (
+            <>
+              Your wallet is eligible! You’ve secured{" "}
+              <span className="text-gold-gradient font-semibold">2 NFTs</span> in the{" "}
+              <span className="text-gold-gradient font-semibold">GTD Mint Phase</span>.
+              Let’s go, <span className="text-pink-400">October Xth</span>, mark your calendars!
+            </>
+          ),
+          Graduated_Crown: (
+            <>
+              Your wallet is eligible! You’ve secured{" "}
+              <span className="text-gold-gradient font-semibold">1 NFT</span> in the{" "}
+              <span className="text-gold-gradient font-semibold">Free Mint Phase</span> and{" "}
+              <span className="text-gold-gradient font-semibold">2 NFTs</span> in the{" "}
+              <span className="text-gold-gradient font-semibold">GTD Mint Phase</span>.
+              Let’s go, <span className="text-pink-400">October Xth</span>, mark your calendars!
+            </>
+          ),
         };
-        return messages[role] || 'Access granted';
-    }
+      
+        return messages[role] || <span className="text-gray-300">Access granted</span>;
+      };
+      
 
 
     const getRoleLabel = (role) => {
@@ -94,17 +120,19 @@ const WalletChecker = ({
         <div className="min-h-screen bg-[#0a0f1c] flex items-center justify-center p-4" style={customStyles}>
             <div className="w-full max-w-md">
                 {/* Glass morphism container */}
-                <div className="bg-700/30 rounded-2xl bg-clip-padding backdrop-filter backdrop-blur-sm   p-8">
-                    <h1 className="text-3xl font-bold font-[restora] bg-clip-text text-transparent mb-6 text-center"
-                        style={{
+                <div className="bg-700/30 rounded-2xl  bg-clip-padding backdrop-filter backdrop-blur-sm   p-8">
+                    <img src={logo} alt="logo" className='w-[100px] m-auto' />
 
-                            backgroundImage: `
-                          radial-gradient(ellipse farthest-corner at right bottom, #FFD700 0%, #F4C430 10%, #E6AC00 28%, #D4AF37 38%, transparent 78%),
-                          radial-gradient(ellipse farthest-corner at left top, #FFFACD 0%, #FFF8DC 8%, #F0E68C 20%, #E6B93C 50%, #B8860B 100%)
-                        `,
-                        }}>
+                    <h1 className="text-3xl mb-6 font-bold font-[restora] text-gold-gradient text-center">
+                        
                         Coronad Wallet Checker
+                    <div
+  className="absolute  left-1/2 transform -translate-x-1/2 
+             w-32 md:w-64 h-0.5 bg-gradient-to-r from-transparent 
+             via-[#d4af37] to-transparent opacity-60"
+></div>
                     </h1>
+                    {/* <div class="absolute left-1/2 transform -translate-x-1/2 w-32 h-0.5 bg-gradient-to-r from-transparent realistic-gold-border-thin to-transparent opacity-60"></div> */}
 
                     <div className="space-y-6">
                         <div className="space-y-2">
@@ -188,7 +216,7 @@ const WalletChecker = ({
                                                     {result.roles && (
                                                         <div
 
-                                                            className={`inline-flex items-center px-3 py-1.5 rounded-full font-semibold shadow-xl bg-clip-text text-transparent bg-gradient-to-b border border-gray-600/40 from-yellow-50 to-yellow-500 }`}
+                                                            className={`inline-flex items-center px-3 py-1.5 rounded-full font-semibold font-[restora] shadow-xl bg-clip-text text-transparent bg-gradient-to-b border border-gray-600/40 from-yellow-50 to-yellow-500 }`}
                                                         >
                                                             {getRoleLabel(result.roles)}
                                                         </div>
