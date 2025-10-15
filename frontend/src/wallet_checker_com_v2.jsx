@@ -212,7 +212,7 @@ const WalletChecker = ({
                                             <div className="">
                                                 <p className="text-gray-400 text-sm font-medium">Access Levels:</p>
                                                 <div className="flex flex-wrap justify-center gap-2">
-                                                    {console.log(result)}
+                                                    
                                                     {result.roles && (
                                                         <div
 
