@@ -7,7 +7,11 @@
   font-style: normal;
   font-display: swap;
 }
-
+:root {
+  --gold: #ffb338;
+  --light-shadow: #77571d;
+  --dark-shadow: #3e2904;
+}
 
 @theme {
   --font-family-restora: 'Restora', serif;
@@ -17,7 +21,7 @@
   background-image: linear-gradient(#0f0f0f,#0f0f0f), linear-gradient(135deg, #654321, #b38728, #d4af37, #ebd197, #fcf6ba, #ebd197, #d4af37, #b38728, #654321);
   background-origin: border-box;
   background-clip: content-box, border-box;
-  border: 1px solid #0000;
+  border: 3px solid #0000;
   border-radius: 12px;
   box-shadow: 0 2px 8px #0000004d, 0 0 0 1px #d4af3733, inset 0 1px #fbf5b74d;
 }
@@ -42,4 +46,148 @@
         #B8860B 100%
       );
   }
+}
+
+.text-gold-glow {
+  filter: drop-shadow(0px 0px 20px rgba(212, 175, 55, 0.3));
+}
+
+.gold-button {
+    color: #2f1b14;
+    cursor: pointer;
+    text-shadow: 0 1px 2px #fff3, 0 -1px 1px #8b45134d;
+    background: radial-gradient(at 100% 100%, gold, #f4c430 10%, #e6ac00 28%, #d4af37 38%, #0000 78%), radial-gradient(at 0 0, #fffacd, #fff8dc 8%, khaki 20%, #e6b93c 50%, #b8860b);
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 700;
+    transition: all .3s;
+    position: relative;
+    box-shadow: 0 4px 12px #0000004d, inset 0 1px #fffacd66, inset 0 -1px #8b451333;
+}
+
+.gold-button:hover {
+  background: radial-gradient(at 100% 100%, #ffec8b, gold 8%, #f4c430 25%, #e6ac00 35%, #0000 75%), radial-gradient(at 0 0, #fff, #fffacd 5%, #fff8dc 15%, khaki 45%, #d4af37);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px #0006, inset 0 1px #fffacd80, inset 0 -1px #8b45134d;
+  scale: 1.05;
+}
+
+.gold-3d-text {
+  
+   
+    @apply bg-clip-text text-transparent; /* Makes the text transparent so the background shows through */
+    background-image: radial-gradient(
+      ellipse farthest-corner at right bottom,
+      #FFD700 0%,
+      #F4C430 10%,
+      #E6AC00 28%,
+      #D4AF37 38%,
+      transparent 78%
+    ),
+    radial-gradient(
+      ellipse farthest-corner at center top,
+      #FFFACD 0%,
+      #FFF8DC 8%,
+      #F0E68C 20%,
+      #E6B93C 50%,
+      #B8860B 100%
+    );
+    -webkit-background-clip: text; 
+   
+  
+
+  text-shadow:
+    1px 1px 0px #F0E68C 20%, /* Darker gold shadow for depth */
+    2px 2px 0px  #E6B93C 50%,
+    3px 3px 0px  #B8860B 100%
+    4px 4px 0px  #FFFACD 0%,
+    5px 5px 0px #FFF8DC 8%,
+    /* Add more layers for greater depth */
+    8px 8px 10px rgba(0, 0, 0, 0.5); /* A final, softer shadow for overall depth */
+}
+
+.wrapper {
+
+  
+  display: grid;
+  grid-template-areas: "overlap";
+  place-content: center;
+  text-transform: uppercase;
+  height: 100xp;
+  text-align: center;
+}
+.wrapper > div {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #363833;
+  font-family: 'Restora';
+  font-size: clamp(20px, 8.5px, 32px);
+  grid-area: overlap;
+  letter-spacing: 1px;
+  -webkit-text-stroke: 2px transparent;
+
+}
+
+div.bbg {
+  background-image: repeating-linear-gradient(
+    105deg,
+    var(--gold) 0%,
+    var(--dark-shadow) 5%,
+    var(--gold) 12%
+  );
+  color: transparent;
+  filter: drop-shadow(5px 15px 15px black);
+  transform: scaleY(1.05);
+  transform-origin: top;
+}
+div.fg {
+  background-image: repeating-linear-gradient(
+    5deg,
+    var(--gold) 0%,
+    var(--light-shadow) 23%,
+    var(--gold) 31%
+  );
+  color: #F4C430;
+  transform: scale(1);
+}
+
+/* Fade animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.3s ease-in forwards;
+}
+
+.fade-in-slow {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.fade-in-fast {
+  animation: fadeIn 0.3s ease-out forwards;
 }

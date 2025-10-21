@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import useWalletCheck from './hooks/wallet_check_hook';
 import { validateEVMAddress } from './utils/validation_utils';
-import logo from "./assets/logo.png"
+import logo from "./assets/hero-pic.png"
 
 
 
@@ -54,15 +54,7 @@ const WalletChecker = ({
         return [];
     };
 
-    // const getRoleColor = (role) => {
-    //     const colors = {
-    //         // gtdwhitelist: 'from-emerald-50 to-emerald-400',
-    //         // whitelist: 'from-red-50 to-red-500', 
-    //         gtdfreemint: 'from-yellow-50 to-yellow-500'
-    //     };
-    //     return colors[role] || 'from-yellow-50 to-yellow-500';
-    // };
-
+   
     const getRoleMessage = (role) => {
         const messages = {
           Crown: (
@@ -70,7 +62,7 @@ const WalletChecker = ({
               Your wallet is eligible! You’ve secured{" "}
               <span className="text-gold-gradient font-semibold">2 NFTs</span> in the{" "}
               <span className="text-gold-gradient font-semibold">FCFS Mint Phase</span>.
-              Let’s go, <span className="text-pink-400">October Xth</span>, mark your calendars!
+              Let’s go,October Xth, mark your calendars!
             </>
           ),
           Loyal_Crown: (
@@ -78,7 +70,7 @@ const WalletChecker = ({
               Your wallet is eligible! You’ve secured{" "}
               <span className="text-gold-gradient font-semibold">2 NFTs</span> in the{" "}
               <span className="text-gold-gradient font-semibold">GTD Mint Phase</span>.
-              Let’s go, <span className="text-pink-400">October Xth</span>, mark your calendars!
+              Let’s go,October Xth, mark your calendars!
             </>
           ),
           Graduated_Crown: (
@@ -88,7 +80,7 @@ const WalletChecker = ({
               <span className="text-gold-gradient font-semibold">Free Mint Phase</span> and{" "}
               <span className="text-gold-gradient font-semibold">2 NFTs</span> in the{" "}
               <span className="text-gold-gradient font-semibold">GTD Mint Phase</span>.
-              Let’s go, <span className="text-pink-400">October Xth</span>, mark your calendars!
+              Let’s go,October Xth, mark your calendars!
             </>
           ),
         };
@@ -107,32 +99,27 @@ const WalletChecker = ({
         return labels[role] || role;
     };
 
-    // const getRolePriority = (role) => {
-    //     const priorities = {
-    //         gtdfreemint: 3,
-    //         whitelist: 2,
-    //         whitelist: 1
-    //     };
-    //     return priorities[role] || 0;
-    // };
 
     return (
         <div className="min-h-screen bg-[#0a0f1c] flex items-center justify-center p-4" style={customStyles}>
             <div className="w-full max-w-md">
                 {/* Glass morphism container */}
                 <div className="bg-700/30 rounded-2xl  bg-clip-padding backdrop-filter backdrop-blur-sm   p-8">
-                    <img src={logo} alt="logo" className='w-[100px] m-auto' />
+                    <img src={logo} alt="logo" className='w-[120px]  mx-auto' />
 
-                    <h1 className="text-3xl mb-6 font-bold font-[restora] text-gold-gradient text-center">
+                    <h1 className="text-2xl mb-6 font-bold font-[restora] text-gold-gradient text-gold-glow text-center">
+                  
+
                         
-                        Coronad Wallet Checker
+                    The Crown Chooses The Worthy
                     <div
-  className="absolute  left-1/2 transform -translate-x-1/2 
+  className="absolute  left-1/2 transform -translate-x-1/2  m-2
              w-32 md:w-64 h-0.5 bg-gradient-to-r from-transparent 
              via-[#d4af37] to-transparent opacity-60"
 ></div>
                     </h1>
-                    {/* <div class="absolute left-1/2 transform -translate-x-1/2 w-32 h-0.5 bg-gradient-to-r from-transparent realistic-gold-border-thin to-transparent opacity-60"></div> */}
+                    <p className='text-[#a8a399] text-center text-sm pb-3'>Recognition belongs to the chosen</p>
+             
 
                     <div className="space-y-6">
                         <div className="space-y-2">
@@ -150,17 +137,7 @@ const WalletChecker = ({
                             <button
                                 onClick={handleSubmit}
                                 disabled={loading || !!validationError}
-                                className="w-full py-4 px-6 text-[ #2f1b14] font-semibold rounded-xl transition-all duration-200 
-             transform hover:scale-[1.02] disabled:hover:scale-100
-             focus:outline-none focus:ring-2 focus:ring-yellow-500/50
-             disabled:cursor-not-allowed shadow-md hover:shadow-lg"
-                                style={{
-                                    backgroundImage: `
-      radial-gradient(ellipse farthest-corner at right bottom, #FFD700 0%, #F4C430 10%, #E6AC00 28%, #D4AF37 38%, transparent 78%),
-      radial-gradient(ellipse farthest-corner at left top, #FFFACD 0%, #FFF8DC 8%, #F0E68C 20%, #E6B93C 50%, #B8860B 100%)
-    `,
-                                }}
-                            >
+                                className='w-full gold-button block text-center  transition-all duration-200 transform hover:'>
                                 {loading ? (
                                     <div className="flex items-center justify-center space-x-2">
                                         <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
@@ -173,14 +150,14 @@ const WalletChecker = ({
                         </div>
 
                         {validationError && (
-                            <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3">
+                            <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3 fade-in-fast">
                                 <p className="text-red-400 text-sm font-medium">{validationError}</p>
                             </div>
                         )}
                     </div>
 
                     {loading && (
-                        <div className="mt-8 text-center">
+                        <div className="mt-8 text-center fade-in">
                             <div className="inline-flex items-center space-x-3 bg-gray-900/50 rounded-full px-6 py-3 backdrop-blur-sm">
                                 <div className="w-6 h-6 border-2 border-blue-500/30 border-t-blue-500 rounded-full animate-spin"></div>
                                 <p className="text-gray-300 font-medium">Checking wallet status...</p>
@@ -189,7 +166,7 @@ const WalletChecker = ({
                     )}
 
                     {error && (
-                        <div className="mt-6 bg-red-500/10 border border-red-500/20 rounded-xl p-4">
+                        <div className="mt-6 bg-red-500/10 border border-red-500/20 rounded-xl p-4 fade-in">
                             <div className="flex items-center space-x-3">
                                 <span className="text-red-400 text-xl">❌</span>
                                 <p className="text-red-400 font-medium">{error}</p>
@@ -199,24 +176,24 @@ const WalletChecker = ({
 
                     {result && !loading && !error && (
 
-                        <div className="mt-6">
+                        <div className="mt-6 fade-in">
                             {result.whitelisted ? (
-                                <div className='realistic-gold-border-thin relative overflow-hidden transition-all duration-300 hover:shadow-xl rounded-xl '>
+                                <div className='realistic-gold-border-thin relative overflow-hidden transition-all duration-300 hover:shadow-xl rounded-xl fade-in-slow'>
                                 <div className=" rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm  p-6">
                                     <div className="flex items-center text-center space-x-4">
 
                                         <div className="flex-1 space-y-4">
-                                            <h3 className="text-xl font-bold font-[restora] bg-clip-text text-transparent bg-gradient-to-bl from-yellow-100 to-yellow-500 drop-shadow-xl/50 mb-5"> Congratulations!</h3>
+                                            <h3 className="text-xl font-bold font-[restora] bg-clip-text text-transparent tracking-wider text-gold-gradient mb-5 text-gold-glow fade-in-slow"> Congratulations!</h3>
 
                                             {/* Multiple roles display */}
                                             <div className="">
-                                                <p className="text-gray-400 text-sm font-medium">Access Levels:</p>
+                                                <p className="text-[#E0E0E0] text-sm font-regular">Access Levels:</p>
                                                 <div className="flex flex-wrap justify-center gap-2">
                                                     
                                                     {result.roles && (
                                                         <div
 
-                                                            className={`inline-flex items-center px-3 py-1.5 rounded-full font-semibold font-[restora] shadow-xl bg-clip-text text-transparent bg-gradient-to-b border border-gray-600/40 from-yellow-50 to-yellow-500 }`}
+                                                            className={`inline-flex items-center px-3 py-1.5 rounded-full font-semibold font-[restora] shadow-xl bg-clip-text text-transparent bg-gradient-to-b border border-gray-600/40 text-gold-gradient }`}
                                                         >
                                                             {getRoleLabel(result.roles)}
                                                         </div>
@@ -227,7 +204,7 @@ const WalletChecker = ({
                                             {getRoles(result) && (
                                                 <div
 
-                                                className="text-regular text-[#e8e3d3] mb-6 text-center"
+                                                className="text-regular text-[#E0E0E0] mb-6 text-center"
                                                 
                                                 >
                                                   {getRoleMessage(result.roles)} 
@@ -235,17 +212,7 @@ const WalletChecker = ({
                                                 </div>
                                             )}
 
-                                            {/* Role count indicator */}
-
-                                            {/* {getRoles(result).length > 0 && (
-    <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
-        <p className="text-blue-400 text-sm font-medium">
-            {getRoles(result).length>1?`Your wallet has ${getRoles(result).length} different access levels.`: 'Your wallet has only 1 access level.'}
-        </p>
-    </div> */}
-
-
-                                            {/* Wallet info display */}
+                                           
                                             {result.wallet_data && (
                                                 <div className="bg-gray-800/50 border border-gray-700/50 rounded-lg p-3">
                                                     <p className="text-gray-400 text-xs font-medium mb-1">Wallet Details:</p>
@@ -260,7 +227,7 @@ const WalletChecker = ({
                                 </div>
                                 </div>
                             ) : (
-                                <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-6">
+                                <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-6 fade-in">
                                     <div className="flex items-start space-x-4">
                                         <div className="flex-shrink-0">
                                             <div className="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center">
