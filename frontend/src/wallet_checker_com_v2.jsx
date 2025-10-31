@@ -8,7 +8,7 @@ import logo from "./assets/hero-pic.png"
 const WalletChecker = ({
     apiEndpoint = 'https://wallet-checker-server.vercel.app/api/wallet/check',
     onResult = null,
-    customStyles = {},
+   
     placeholder = 'Enter your wallet address (0x...)'
 }) => {
     const [address, setAddress] = useState('');
@@ -101,10 +101,11 @@ const WalletChecker = ({
 
 
     return (
-        <div className="min-h-screen bg-[#0a0f1c] flex items-center justify-center p-4" style={customStyles}>
-            <div className="w-full max-w-md">
+        <div className="min-h-screen w-full  my-background  flex items-center justify-center p-4 z-9 ">
+           {/* <div className="min-h-screen   bg-custom-blur z-1"> */}
+            <div className="w-full max-w-md ">
                 {/* Glass morphism container */}
-                <div className="bg-700/30 rounded-2xl  bg-clip-padding backdrop-filter backdrop-blur-sm   p-8">
+                <div className="bg-700/30 rounded-2xl  p-8">
                     <img src={logo} alt="logo" className='w-[120px]  mx-auto' />
 
                     <h1 className="text-2xl mb-6 font-bold font-[restora] text-gold-gradient text-gold-glow text-center">
@@ -265,6 +266,7 @@ const WalletChecker = ({
                 </div>
             </div>
         </div>
+      
     );
 };
 

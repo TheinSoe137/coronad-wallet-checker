@@ -18,7 +18,7 @@
 }
 
 .realistic-gold-border-thin {
-  background-image: linear-gradient(#0f0f0f,#0f0f0f), linear-gradient(135deg, #654321, #b38728, #d4af37, #ebd197, #fcf6ba, #ebd197, #d4af37, #b38728, #654321);
+  /* background-image: linear-gradient(#0f0f0f,#0f0f0f), linear-gradient(135deg, #654321, #b38728, #d4af37, #ebd197, #fcf6ba, #ebd197, #d4af37, #b38728, #654321); */
   background-origin: border-box;
   background-clip: content-box, border-box;
   border: 3px solid #0000;
@@ -46,7 +46,15 @@
         #B8860B 100%
       );
   }
+} 
+
+.bg-custom-blur {
+  background-color: rgba(10, 15, 28, 0.5); /* bg-[#0a0f1c]/50 */
+  background-clip: padding-box;             /* bg-clip-padding */
+  backdrop-filter: blur(2px);               /* backdrop-blur-[2px] */
+  -webkit-backdrop-filter: blur(2px);       /* for Safari support */
 }
+
 
 .text-gold-glow {
   filter: drop-shadow(0px 0px 20px rgba(212, 175, 55, 0.3));
@@ -190,4 +198,31 @@ div.fg {
 
 .fade-in-fast {
   animation: fadeIn 0.3s ease-out forwards;
+}
+
+
+.my-background {
+  background-image: url('./assets/wallet_checker_bg.png'); 
+ 
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  
+
+}
+
+/* Black tint overlay over the background image */
+.my-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure foreground content appears above the overlay */
+.my-background > * {
+
+  z-index: 1;
 }
