@@ -62,7 +62,7 @@ const WalletChecker = ({
               Your wallet is eligible! You’ve secured{" "}
               <span className="text-gold-gradient font-semibold">2 NFTs</span> in the{" "}
               <span className="text-gold-gradient font-semibold">FCFS Mint Phase</span>.
-              Let’s go,October Xth, mark your calendars!
+              Lets go to mark your calendars, November Xth
             </>
           ),
           Loyal_Crown: (
@@ -70,7 +70,7 @@ const WalletChecker = ({
               Your wallet is eligible! You’ve secured{" "}
               <span className="text-gold-gradient font-semibold">2 NFTs</span> in the{" "}
               <span className="text-gold-gradient font-semibold">GTD Mint Phase</span>.
-              Let’s go,October Xth, mark your calendars!
+              Lets go to mark your calendars, November Xth
             </>
           ),
           Graduated_Crown: (
@@ -80,7 +80,7 @@ const WalletChecker = ({
               <span className="text-gold-gradient font-semibold">Free Mint Phase</span> and{" "}
               <span className="text-gold-gradient font-semibold">2 NFTs</span> in the{" "}
               <span className="text-gold-gradient font-semibold">GTD Mint Phase</span>.
-              Let’s go,October Xth, mark your calendars!
+              Lets go to mark your calendars, November Xth
             </>
           ),
         };
@@ -101,7 +101,7 @@ const WalletChecker = ({
 
 
     return (
-        <div className="min-h-screen w-full  my-background  flex items-center justify-center p-4 z-9 ">
+        <div className="min-h-screen w-full my-background flex items-center justify-center p-4 z-9 ">
            {/* <div className="min-h-screen   bg-custom-blur z-1"> */}
             <div className="w-full max-w-md ">
                 {/* Glass morphism container */}
