@@ -62,7 +62,7 @@ const WalletChecker = ({
               Your wallet is eligible! You’ve secured{" "}
               <span className="text-gold-gradient font-semibold">2 NFTs</span> in the{" "}
               <span className="text-gold-gradient font-semibold">FCFS Mint Phase</span>.
-              Lets go to mark your calendars, November Xth
+              Lets go to mark your calendars, November 27th,18:40 UTC
             </>
           ),
           Loyal_Crown: (
@@ -70,7 +70,7 @@ const WalletChecker = ({
               Your wallet is eligible! You’ve secured{" "}
               <span className="text-gold-gradient font-semibold">2 NFTs</span> in the{" "}
               <span className="text-gold-gradient font-semibold">GTD Mint Phase</span>.
-              Lets go to mark your calendars, November Xth
+              Lets go to mark your calendars, November 27th,14:40 UTC
             </>
           ),
           Graduated_Crown: (
@@ -80,7 +80,7 @@ const WalletChecker = ({
               <span className="text-gold-gradient font-semibold">Free Mint Phase</span> and{" "}
               <span className="text-gold-gradient font-semibold">2 NFTs</span> in the{" "}
               <span className="text-gold-gradient font-semibold">GTD Mint Phase</span>.
-              Lets go to mark your calendars, November Xth
+              Lets go to mark your calendars, November 27th,13:40 UTC
             </>
           ),
         };
