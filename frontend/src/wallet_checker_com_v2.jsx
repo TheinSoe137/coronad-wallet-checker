@@ -60,17 +60,17 @@ const WalletChecker = ({
           Crown: (
             <>
               Your wallet is eligible! You’ve secured{" "}
-              <span className="text-gold-gradient font-semibold">2 NFTs</span> in the{" "}
+              <span className="text-gold-gradient font-semibold">3 NFTs</span> in the{" "}
               <span className="text-gold-gradient font-semibold">FCFS Mint Phase</span>.
-              Lets go to mark your calendars, November 27th,18:40 UTC
+              Lets go to mark your calendars,  December 1st,18:30 UTC
             </>
           ),
           Loyal_Crown: (
             <>
               Your wallet is eligible! You’ve secured{" "}
-              <span className="text-gold-gradient font-semibold">2 NFTs</span> in the{" "}
+              <span className="text-gold-gradient font-semibold">3 NFTs</span> in the{" "}
               <span className="text-gold-gradient font-semibold">GTD Mint Phase</span>.
-              Lets go to mark your calendars, November 27th,14:40 UTC
+              Lets go to mark your calendars, December 1st,14:30 UTC
             </>
           ),
           Graduated_Crown: (
@@ -78,9 +78,9 @@ const WalletChecker = ({
               Your wallet is eligible! You’ve secured{" "}
               <span className="text-gold-gradient font-semibold">1 NFT</span> in the{" "}
               <span className="text-gold-gradient font-semibold">Free Mint Phase</span> and{" "}
-              <span className="text-gold-gradient font-semibold">2 NFTs</span> in the{" "}
+              <span className="text-gold-gradient font-semibold">3 NFTs</span> in the{" "}
               <span className="text-gold-gradient font-semibold">GTD Mint Phase</span>.
-              Lets go to mark your calendars, November 27th,13:40 UTC
+              Lets go to mark your calendars, December 1st,13:30 UTC
             </>
           ),
         };
